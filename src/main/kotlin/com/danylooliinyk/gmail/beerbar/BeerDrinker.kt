@@ -1,3 +1,5 @@
+package com.danylooliinyk.gmail.beerbar
+
 class BeerDrinker {
     private val stomachSize: Byte = FIVE_LITRES
 

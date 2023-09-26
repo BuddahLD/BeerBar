@@ -1,3 +1,5 @@
+package com.danylooliinyk.gmail.beerbar
+
 /**
  * The entry point of our app.
  */
@@ -31,5 +33,7 @@ fun main() {
         "2" -> println("Любиш негрів?")
         "3" -> println("Дебіл сука")
         "4" -> println("Хтоб сумнівався")
+        "5" -> println("welcome to the club buddy")
+        "6" -> println("нирки досвідос")
     }
 }
