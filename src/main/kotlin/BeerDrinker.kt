@@ -1,7 +1,7 @@
 class BeerDrinker {
     private val stomachSize: Byte = FIVE_LITRES
 
-    fun vypytyPyva(skoka: Byte) {
+    fun drinkBeer(skoka: Byte) {
         if (skoka <= stomachSize) {
             println("О клас я випив пива")
         } else {
@@ -9,7 +9,7 @@ class BeerDrinker {
         }
     }
 
-    fun vypytyPyva(glass: Glass): Glass = when(glass.isFull) {
+    fun drinkBeer(glass: Glass): Glass = when(glass.isFull) {
         true -> {
             println("Норм йобнув")
             glass.isFull = false

@@ -1,3 +1,6 @@
+/**
+ * The entry point of our app.
+ */
 fun main() {
     val beerMenu = mapOf(
         "1" to "Світле",
@@ -10,7 +13,7 @@ fun main() {
 
     spirtln("Шо міс'є бажає?")
     spirtln("Наш ассортимент, пупсік:")
-    beerMenu.forEach { position, beerName ->
+    beerMenu.forEach { (position, beerName) ->
         println("$position - $beerName")
     }
     val choice = readChoice()
@@ -30,7 +33,3 @@ fun main() {
         "4" -> println("Хтоб сумнівався")
     }
 }
-
-fun spirtln(text: String): Unit = println(text)
-
-fun readChoice(): String = readln()
