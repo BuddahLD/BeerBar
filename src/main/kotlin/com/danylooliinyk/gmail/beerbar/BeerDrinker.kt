@@ -2,22 +2,24 @@ package com.danylooliinyk.gmail.beerbar
 
 class BeerDrinker {
     private val stomachSize: Byte = FIVE_LITRES
+    private var isInBar: Boolean = false
 
-    fun drinkBeer(skoka: Byte) {
-        if (skoka <= stomachSize) {
-            println("О клас я випив пива")
+
+    fun drinkBeer() {
+        if (isInBar) {
+            println("Можна замовити пива")
         } else {
-            println("Йойо стільки не влізе")
+            println("Я ще не в барі")
+
         }
     }
 
-    fun drinkBeer(glass: Glass): Glass = when(glass.isFull) {
-        true -> {
-            println("Норм йобнув")
-            glass.isFull = false
-            glass
-        }
-        false -> glass
+    fun enterBar() {
+        isInBar = true
+    }
+
+    fun exitBar(){
+        isInBar = false
     }
 
     companion object {
