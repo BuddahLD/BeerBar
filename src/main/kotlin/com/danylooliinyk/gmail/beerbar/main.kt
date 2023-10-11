@@ -31,9 +31,9 @@ fun main() {
 //        "6" -> println("нирки досвідос")
 //    }
     val beerDrinker = BeerDrinker()
-    beerDrinker.drinkBeer()
+    beerDrinker.drinkBeer(volume = 2)
     beerDrinker.enterBar()
-    beerDrinker.drinkBeer()
+    beerDrinker.drinkBeer(volume = 50)
     beerDrinker.exitBar()
-    beerDrinker.drinkBeer()
+    beerDrinker.drinkBeer(volume = 78)
 }

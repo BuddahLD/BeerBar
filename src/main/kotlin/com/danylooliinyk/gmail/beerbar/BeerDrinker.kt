@@ -3,14 +3,17 @@ package com.danylooliinyk.gmail.beerbar
 class BeerDrinker {
     private val stomachSize: Byte = FIVE_LITRES
     private var isInBar: Boolean = false
+    private val stomach: IStomach = object : IStomach {
+        override fun fill(volume: Byte) {
+            println("Бахнули: $volume")
+        }
+    }
 
-
-    fun drinkBeer() {
+    fun drinkBeer(volume: Byte) {
         if (isInBar) {
-            println("Можна замовити пива")
+            stomach.fill(volume)
         } else {
             println("Я ще не в барі")
-
         }
     }
 
