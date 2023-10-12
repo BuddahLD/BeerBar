@@ -30,7 +30,7 @@ fun main() {
 //        "5" -> println("welcome to the club buddy")
 //        "6" -> println("нирки досвідос")
 //    }
-    val beerDrinker = BeerDrinker()
+    val beerDrinker = BeerDrinker(isInBar = true)
     beerDrinker.drinkBeer(volume = 2)
     beerDrinker.enterBar()
     beerDrinker.drinkBeer(volume = 50)

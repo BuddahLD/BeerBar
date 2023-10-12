@@ -1,13 +1,8 @@
 package com.danylooliinyk.gmail.beerbar
 
-class BeerDrinker {
+class BeerDrinker(private var isInBar: Boolean = false) {
     private val stomachSize: Byte = FIVE_LITRES
-    private var isInBar: Boolean = false
-    private val stomach: IStomach = object : IStomach {
-        override fun fill(volume: Byte) {
-            println("Бахнули: $volume")
-        }
-    }
+    private val stomach: Stomach = Stomach()
 
     fun drinkBeer(volume: Byte) {
         if (isInBar) {
@@ -21,7 +16,7 @@ class BeerDrinker {
         isInBar = true
     }
 
-    fun exitBar(){
+    fun exitBar() {
         isInBar = false
     }
 
@@ -29,3 +24,31 @@ class BeerDrinker {
         private const val FIVE_LITRES = 5.toByte()
     }
 }
+
+interface IStomach {
+
+    fun fill(volume: Byte)
+}
+
+private class Stomach : IStomach {
+    private var stomachFilling: Int = 0
+
+    override fun fill(volume: Byte) {
+        // треба додати перевірку від'ємних чисел
+        if ((stomachFilling + volume) <= STOMACH_SIZE) {
+            stomachFilling += volume
+            println("заповненість шлунку: $stomachFilling/$STOMACH_SIZE")
+        } else {
+            println("ти луснув")
+            return
+        }
+        if (stomachFilling == STOMACH_SIZE) {
+            println("фатить")
+        }
+    }
+
+    companion object {
+        const val STOMACH_SIZE = 5
+    }
+}
+
