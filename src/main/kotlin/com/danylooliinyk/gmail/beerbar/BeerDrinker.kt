@@ -2,7 +2,7 @@ package com.danylooliinyk.gmail.beerbar
 
 class BeerDrinker(private var isInBar: Boolean = false) {
     private val stomachSize: Byte = FIVE_LITRES
-    private val stomach: Stomach = IStomach()
+    private val stomach: IStomach =
 
     fun drinkBeer(volume: Byte) {
         if (isInBar) {
@@ -30,6 +30,7 @@ interface IStomach {
     fun fill(volume: Byte)
 }
 
+
 private class Stomach : IStomach {
     private var stomachFilling: Int = 0
 
@@ -38,6 +39,7 @@ private class Stomach : IStomach {
             println("в шлунку вакууму не буває")
             return
         }
+        stomachFilling += volume
         if ((stomachFilling + volume) <= STOMACH_SIZE) {
             stomachFilling += volume
             println("заповненість шлунку: $stomachFilling/$STOMACH_SIZE")
