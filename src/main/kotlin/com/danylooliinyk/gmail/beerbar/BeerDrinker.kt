@@ -1,8 +1,8 @@
 package com.danylooliinyk.gmail.beerbar
 
-class BeerDrinker(private var isInBar: Boolean = false) {
+class BeerDrinker(var isInBar: Boolean = false) {
     private val stomachSize: Byte = FIVE_LITRES
-    private val stomach: IStomach =
+    private val stomach: IStomach = Stomach()
 
     fun drinkBeer(volume: Byte) {
         if (isInBar) {
