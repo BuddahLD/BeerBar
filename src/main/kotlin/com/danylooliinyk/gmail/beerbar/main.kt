@@ -4,16 +4,11 @@ package com.danylooliinyk.gmail.beerbar
  * The entry point of our stepBasedBar.
  */
 fun main() {
-    println(
-        """
-            Команди: 
-            - Зайти в бар -> увійти
-            - Вийти з бару -> вийти
-            - Випити пива -> сьорб
-            - Відригнути -> риг
-            - Я в барі? -> де
-        """.trimIndent()
-    )
+    val commands = mutableMapOf("увійти" to "Зайти в бар", "вийти" to "Вийти з бару", "сьорб" to "Випити пива", "риг" to "Відригнути", "де" to "Я в барі?")
+    commands.forEach { entry ->
+        println("${entry.key} -> ${entry.value} ")
+
+    }
     val player = BeerDrinker()
     val isInBarPhrase = if (player.isInBar) "В барі" else "Поза баром"
     println("Гравець зараз: $isInBarPhrase")
