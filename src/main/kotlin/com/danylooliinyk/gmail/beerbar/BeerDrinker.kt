@@ -25,6 +25,14 @@ class BeerDrinker(var isInBar: Boolean = false) {
     }
 }
 
+fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when(command) {
+    BeerDrinkerCommand.УВІЙТИ -> enterBar()
+    BeerDrinkerCommand.ВИЙТИ -> exitBar()
+    BeerDrinkerCommand.СЬОРБ -> println("команда ще в розробці")
+    BeerDrinkerCommand.РИГ -> println("команда ще в розробці")
+    BeerDrinkerCommand.ДЕ -> println("команда ще в розробці")
+}
+
 interface IStomach {
 
     fun fill(volume: Byte)
@@ -55,5 +63,13 @@ private class Stomach : IStomach {
     companion object {
         const val STOMACH_SIZE = 5
     }
+}
+
+enum class BeerDrinkerCommand {
+    УВІЙТИ,
+    ВИЙТИ,
+    СЬОРБ,
+    РИГ,
+    ДЕ,
 }
 

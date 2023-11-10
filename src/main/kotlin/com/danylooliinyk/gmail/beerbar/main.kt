@@ -4,27 +4,36 @@ package com.danylooliinyk.gmail.beerbar
  * The entry point of our stepBasedBar.
  */
 fun main() {
-    val commands = mutableMapOf("увійти" to "Зайти в бар", "вийти" to "Вийти з бару", "сьорб" to "Випити пива", "риг" to "Відригнути", "де" to "Я в барі?")
-    commands.forEach { entry ->
-        println("${entry.key} -> ${entry.value} ")
-
-    }
+    val commands = mutableMapOf(
+        "увійти" to "Зайти в бар",
+        "вийти" to "Вийти з бару",
+        "сьорб" to "Випити пива",
+        "риг" to "Відригнути",
+        "де" to "Я в барі?"
+    )
     val player = BeerDrinker()
-    val isInBarPhrase = if (player.isInBar) "В барі" else "Поза баром"
-    println("Гравець зараз: $isInBarPhrase")
-    println("Введіть команду:")
-    val userInput = readln()
-    val userInputString = handleCommand(command = userInput)
-    println(userInputString)
+    // Навчити BeerDrinker говорити
+    while (true) {
+        val isInBarPhrase = if (player.isInBar) "В барі" else "Поза баром"
+        println("Гравець зараз: $isInBarPhrase")
+        println("Доступні команди:")
+        commands.forEach { entry ->
+            println("${entry.key} -> ${entry.value} ")
+        }
+        println("Введіть команду:")
+        val userInput = readln()
+        val beerDrinkerCommand = handleCommand(command = userInput)
+        player.executeCommand(beerDrinkerCommand)
+    }
 }
 
-fun handleCommand(command: String): String = when (command) {
-    "увійти" -> "Зайти в бар"
-    "вийти" -> "Команда ще в розробці"
-    "сьорб" -> "Команда ще в розробці"
-    "риг" -> "Команда ще в розробці"
-    "де" -> "Команда ще в розробці"
-    else -> "Такої команди не існує і існувати не буде"
+fun handleCommand(command: String): BeerDrinkerCommand = when (command) {
+    "увійти" -> BeerDrinkerCommand.УВІЙТИ
+    "вийти" -> BeerDrinkerCommand.ВИЙТИ
+    "сьорб" -> BeerDrinkerCommand.СЬОРБ
+    "риг" -> BeerDrinkerCommand.РИГ
+    "де" -> BeerDrinkerCommand.ДЕ
+    else -> BeerDrinkerCommand.РИГ
 }
 
 
