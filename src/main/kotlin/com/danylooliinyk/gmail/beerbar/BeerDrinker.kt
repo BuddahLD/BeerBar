@@ -25,17 +25,32 @@ class BeerDrinker(var isInBar: Boolean = false) {
     }
 }
 
-fun BeerDrinker.location(location: BeerDrinkerLocation) = when(location) {
-    BeerDrinkerLocation.ВБАРІ -> isInBar = true
-    BeerDrinkerLocation.НЕВБАРІ -> isInBar = false
+fun BeerDrinker.location() = when(isInBar) {
+    true -> "В барі"
+    false -> "Не в барі"
 }
+
+val commands = mutableMapOf(
+    "увійти" to "Зайти в бар",
+    "вийти" to "Вийти з бару",
+    "сьорб" to "Випити пива",
+    "риг" to "Відригнути",
+    "де" to "Я в барі?",
+    "Хелп" to "Доступні команди"
+)
 
 fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when(command) {
     BeerDrinkerCommand.УВІЙТИ -> enterBar()
     BeerDrinkerCommand.ВИЙТИ -> exitBar()
     BeerDrinkerCommand.СЬОРБ -> println("команда ще в розробці")
     BeerDrinkerCommand.РИГ -> println("команда ще в розробці")
-    BeerDrinkerCommand.ДЕ -> location()
+    BeerDrinkerCommand.ДЕ -> println(location())
+    BeerDrinkerCommand.ХЕЛП -> {
+        println("Доступні команди:")
+        commands.forEach { entry ->
+            println("${entry.key} -> ${entry.value} ")
+        }
+    }
 }
 
 interface IStomach {
@@ -76,7 +91,9 @@ enum class BeerDrinkerCommand {
     СЬОРБ,
     РИГ,
     ДЕ,
+    ХЕЛП,
 }
+
 enum class BeerDrinkerLocation {
     ВБАРІ,
     НЕВБАРІ,
