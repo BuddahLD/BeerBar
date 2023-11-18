@@ -25,12 +25,17 @@ class BeerDrinker(var isInBar: Boolean = false) {
     }
 }
 
+fun BeerDrinker.location(location: BeerDrinkerLocation) = when(location) {
+    BeerDrinkerLocation.ВБАРІ -> isInBar = true
+    BeerDrinkerLocation.НЕВБАРІ -> isInBar = false
+}
+
 fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when(command) {
     BeerDrinkerCommand.УВІЙТИ -> enterBar()
     BeerDrinkerCommand.ВИЙТИ -> exitBar()
     BeerDrinkerCommand.СЬОРБ -> println("команда ще в розробці")
     BeerDrinkerCommand.РИГ -> println("команда ще в розробці")
-    BeerDrinkerCommand.ДЕ -> println("команда ще в розробці")
+    BeerDrinkerCommand.ДЕ -> location()
 }
 
 interface IStomach {
@@ -72,4 +77,7 @@ enum class BeerDrinkerCommand {
     РИГ,
     ДЕ,
 }
-
+enum class BeerDrinkerLocation {
+    ВБАРІ,
+    НЕВБАРІ,
+}
