@@ -5,17 +5,17 @@ package com.danylooliinyk.gmail.beerbar
  */
 fun main() {
     val player = BeerDrinker()
-    // Навчити BeerDrinker говорити
     while (true) {
+        println("Наповненість шлунку: ${player.stomachFillingString}")
         println("Введіть команду:")
         print("> ")
         val userInput = readln()
-        val beerDrinkerCommand = handleCommand(command = userInput)
+        val beerDrinkerCommand = mapCommand(command = userInput)
         player.executeCommand(beerDrinkerCommand)
     }
 }
 
-fun handleCommand(command: String): BeerDrinkerCommand = when (command) {
+fun mapCommand(command: String): BeerDrinkerCommand = when (command) {
     "увійти" -> BeerDrinkerCommand.УВІЙТИ
     "вийти" -> BeerDrinkerCommand.ВИЙТИ
     "сьорб" -> BeerDrinkerCommand.СЬОРБ

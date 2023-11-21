@@ -1,8 +1,12 @@
 package com.danylooliinyk.gmail.beerbar
 
+import com.danylooliinyk.gmail.beerbar.Stomach.Companion.STOMACH_SIZE
+
 class BeerDrinker(var isInBar: Boolean = false) {
     private val stomachSize: Byte = FIVE_LITRES
     private val stomach: IStomach = Stomach()
+    val stomachFillingString: String
+        get() = stomach.stomachFillingString
 
     fun drinkBeer(volume: Byte) {
         if (isInBar) {
@@ -25,7 +29,7 @@ class BeerDrinker(var isInBar: Boolean = false) {
     }
 }
 
-fun BeerDrinker.location() = when(isInBar) {
+fun BeerDrinker.location() = when (isInBar) {
     true -> "В барі"
     false -> "Не в барі"
 }
@@ -39,7 +43,7 @@ val commands = mutableMapOf(
     "Хелп" to "Доступні команди"
 )
 
-fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when(command) {
+fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when (command) {
     BeerDrinkerCommand.УВІЙТИ -> enterBar()
     BeerDrinkerCommand.ВИЙТИ -> exitBar()
     BeerDrinkerCommand.СЬОРБ -> println("команда ще в розробці")
@@ -54,13 +58,16 @@ fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when(command) {
 }
 
 interface IStomach {
+    var stomachFilling: Int
 
     fun fill(volume: Byte)
 }
 
+val IStomach.stomachFillingString: String
+    get() = "$stomachFilling/$STOMACH_SIZE"
 
-private class Stomach : IStomach {
-    private var stomachFilling: Int = 0
+class Stomach : IStomach {
+    override var stomachFilling: Int = 0
 
     override fun fill(volume: Byte) {
         if (volume < 0) {
@@ -85,6 +92,7 @@ private class Stomach : IStomach {
     }
 }
 
+
 enum class BeerDrinkerCommand {
     УВІЙТИ,
     ВИЙТИ,
@@ -92,9 +100,4 @@ enum class BeerDrinkerCommand {
     РИГ,
     ДЕ,
     ХЕЛП,
-}
-
-enum class BeerDrinkerLocation {
-    ВБАРІ,
-    НЕВБАРІ,
 }
