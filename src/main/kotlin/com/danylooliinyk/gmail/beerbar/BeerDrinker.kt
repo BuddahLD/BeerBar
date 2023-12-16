@@ -46,7 +46,7 @@ val commands = mutableMapOf(
 fun BeerDrinker.executeCommand(command: BeerDrinkerCommand) = when (command) {
     BeerDrinkerCommand.УВІЙТИ -> enterBar()
     BeerDrinkerCommand.ВИЙТИ -> exitBar()
-    BeerDrinkerCommand.СЬОРБ -> println("команда ще в розробці")
+    BeerDrinkerCommand.СЬОРБ -> drinkBeer(volume = 1)
     BeerDrinkerCommand.РИГ -> println("команда ще в розробці")
     BeerDrinkerCommand.ДЕ -> println(location())
     BeerDrinkerCommand.ХЕЛП -> {
