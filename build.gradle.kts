@@ -1,6 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.9.0"
-    application
+//    kotlin("jvm") version "1.9.0"
+//    application
+    alias(libs.plugins.korge)
 }
 
 group = "com.gmail.danylooliinyk"
@@ -10,18 +11,15 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
 kotlin {
     jvmToolchain(8)
 }
 
-application {
-    mainClass.set("MainKt")
+korge {
+    id = "com.gmail.danylooliinyk.Pyvce"
+
+    targetJvm()
+    targetAndroid()
+
+    serializationJson()
 }
