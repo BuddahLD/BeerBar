@@ -1,5 +1,3 @@
-package com.danylooliinyk.gmail.beerbar
-
 interface IBar {
     val beerVolume: Int
     val capacity: Int

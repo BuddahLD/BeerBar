@@ -1,5 +1,3 @@
-package com.danylooliinyk.gmail.beerbar
-
 /**
  * A new good name for the same old thing.
  */

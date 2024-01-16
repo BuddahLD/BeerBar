@@ -16,7 +16,7 @@ kotlin {
 }
 
 korge {
-    id = "com.gmail.danylooliinyk.Pyvce"
+    id = "com.gmail.danylooliinyk.beerbar"
 
     targetJvm()
     targetAndroid()
