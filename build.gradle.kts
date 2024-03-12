@@ -10,14 +10,17 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(11)
 }
 
 korge {
     id = "com.gmail.danylooliinyk.beerbar"
 
     targetJvm()
-    targetAndroid()
 
     serializationJson()
+}
+
+dependencies {
+    add("commonMainApi", project(":deps"))
 }
