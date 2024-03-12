@@ -59,5 +59,7 @@ class InGameScene : Scene() {
             color = Colors.AQUA
             position(x = 60, y = 500)
         }
+
+        beerDrinker.collidesWith
     }
 }
