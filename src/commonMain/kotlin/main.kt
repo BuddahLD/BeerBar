@@ -6,6 +6,7 @@ import korlibs.korge.input.keys
 import korlibs.korge.scene.Scene
 import korlibs.korge.scene.sceneContainer
 import korlibs.korge.view.SContainer
+import korlibs.korge.view.addUpdater
 import korlibs.korge.view.align.centerOnStage
 import korlibs.korge.view.collision.collidesWith
 import korlibs.korge.view.position
@@ -65,8 +66,12 @@ class InGameScene : Scene() {
             position(x = 60, y = 500)
         }
 
-        if (beerDrinker.collidesWith(listOf(leftSide, upSide, rightSide, bottomLeft, bottomRight))) {
-            canMove = false
+        beerDrinker.addUpdater {
+            canMove = true
+
+            if (beerDrinker.collidesWith(listOf(leftSide, upSide, rightSide, bottomLeft, bottomRight))) {
+                canMove = false
+            }
         }
     }
 
