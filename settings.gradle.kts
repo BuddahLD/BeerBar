@@ -28,6 +28,6 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
-rootProject.name = "Pyvce"
-
 apply(plugin = "com.soywiz.korge.settings")
+
+rootProject.name = "Pyvce"
